@@ -1,0 +1,12 @@
+# Vercel(Python Function) 배포용 실행 의존성. 로컬 개발·테스트는 backend/requirements.txt 를 쓴다.
+fastapi>=0.115
+sqlalchemy>=2.0
+psycopg[binary]>=3.2
+bcrypt>=4.1
+pyjwt>=2.8
+cryptography>=42
+nh3>=0.2.17
+email-validator>=2.1
+numpy>=1.26
+pandas>=2.1
+reportlab>=4.0

@@ -1,0 +1,16 @@
+# 비밀값·인증서·실데이터·로컬 DB 는 저장소와 제출물에 넣지 않는다
+.env
+.env.*
+!.env.example
+backend/certs/
+backend/data/real/*
+!backend/data/real/README.md
+# 공개 이용이 가능한 집계본 2개만 저장소·배포에 포함 (원본 일자 파일 bus_days/ 와 개별 응답은 제외)
+!backend/data/real/bus_monthly.csv
+!backend/data/real/card_emd_monthly_202212_202507.csv
+*.db
+__pycache__/
+.pytest_cache/
+node_modules/
+frontend/dist/
+.vercel/

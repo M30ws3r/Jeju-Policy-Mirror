@@ -1,0 +1,23 @@
+{
+  "_설명": "DATA_MODE=real 일 때 data/real/ 의 CSV 를 읽는 대응표. columns 의 왼쪽은 원본(허브 API 응답) 필드명, 오른쪽은 표준 컬럼명. 왼쪽 값은 예시이며 센터에서 실제 필드명을 확인해 바꿔야 한다.",
+  "card": {
+    "file": "card.csv",
+    "encoding": "utf-8-sig",
+    "columns": {"marketName": "area", "baseYearMonth": "ym", "industryName": "industry", "useCost": "amount", "useCount": "count"}
+  },
+  "bus": {
+    "file": "bus.csv",
+    "encoding": "utf-8-sig",
+    "columns": {"routeNo": "route_no", "baseDate": "date", "userCount": "riders"}
+  },
+  "route_map": {
+    "file": "route_map.csv",
+    "encoding": "utf-8-sig",
+    "columns": {}
+  },
+  "areas": {
+    "file": "areas.csv",
+    "encoding": "utf-8-sig",
+    "columns": {}
+  }
+}

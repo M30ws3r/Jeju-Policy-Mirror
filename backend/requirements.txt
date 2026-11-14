@@ -1,0 +1,16 @@
+# Jeju Policy Mirror backend (Python 3.10+)
+fastapi>=0.115
+uvicorn[standard]>=0.30
+sqlalchemy>=2.0
+psycopg[binary]>=3.2      # Neon(PostgreSQL) 연결용. 센터 로컬(SQLite) 모드에서는 쓰이지 않음
+bcrypt>=4.1               # 비밀번호 해싱
+pyjwt>=2.8                # 세션 토큰
+cryptography>=42          # AES-256-GCM 필드 암호화
+nh3>=0.2.17               # 입력값 정제(HTML 제거)
+email-validator>=2.1      # 이메일 형식 검증
+numpy>=1.26
+pandas>=2.1
+reportlab>=4.0            # 정책 검토 PDF
+# 테스트
+pytest>=8.0
+httpx>=0.27
