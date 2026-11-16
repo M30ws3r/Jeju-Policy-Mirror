@@ -11,7 +11,8 @@ const H = 280;
 const PAD = { left: 44, right: 16, top: 26, bottom: 34 };
 
 /** 대상 지역(실선)과 비교 지역 평균(점선)의 지수 추이. 색에만 의존하지 않도록 선 모양과 직접 라벨을 함께 쓴다. */
-export function Chart({ months, treated, control, policyMonth, areaName }: Props) {
+// controlLabel·measure: 노선 단위 실데이터 화면에서 '비교 노선 평균', '승차 인원'으로 바꿔 쓰기 위한 선택 값 (기본값은 기존 문구)
+export function Chart({ months, treated, control, policyMonth, areaName, controlLabel = "비교 지역 평균", measure = "카드 소비" }: Props & { controlLabel?: string; measure?: string }) {
   const all = [...treated, ...control];
   const lo = Math.floor(Math.min(...all) / 5) * 5;
   const hi = Math.ceil(Math.max(...all) / 5) * 5;
@@ -24,7 +25,7 @@ export function Chart({ months, treated, control, policyMonth, areaName }: Props
 
   return (
     <figure className="chart">
-      <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`${areaName}과 비교 지역의 카드 소비 지수 추이. 시행 시점 ${policyMonth}.`}>
+      <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label={`${areaName}과 ${controlLabel}의 ${measure} 지수 추이. 시행 시점 ${policyMonth}.`}>
         {ticks.map((t) => (
           <g key={t}>
             <line className="grid" x1={PAD.left} x2={W - PAD.right} y1={y(t)} y2={y(t)} />
@@ -52,7 +53,7 @@ export function Chart({ months, treated, control, policyMonth, areaName }: Props
       </svg>
       <figcaption>
         <span className="legend legend-treated">{areaName} (실선)</span>
-        <span className="legend legend-control">비교 지역 평균 (점선)</span>
+        <span className="legend legend-control">{controlLabel} (점선)</span>
         <span className="legend-note">시행 전 평균 = 100</span>
       </figcaption>
     </figure>

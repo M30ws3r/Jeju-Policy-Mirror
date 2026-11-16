@@ -93,7 +93,7 @@ export function CaseResultView({ result, onPdf }: { result: CaseResult; onPdf?: 
       {series?.months && series.treated && series.control && spec.policy_month && (
         <article className="card">
           <h2>시행 전후 흐름</h2>
-          <Chart months={series.months} treated={series.treated} control={series.control} policyMonth={spec.policy_month} areaName={spec.area ?? "대상 노선"} />
+          <Chart months={series.months} treated={series.treated} control={series.control} policyMonth={spec.policy_month} areaName={spec.area ?? "대상 노선"} controlLabel="비교 노선 평균" measure="하루 평균 승차 인원" />
           {result.controls && <p className="small">비교 노선: {result.controls.map((c) => `${c.area}(유사도 ${c.score})`).join(", ")}</p>}
         </article>
       )}
