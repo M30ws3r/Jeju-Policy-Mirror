@@ -4,4 +4,4 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "backend"))
 
-from app.main_v2 import app  # noqa: E402,F401  (v2: 버스 실데이터 사례 API 포함)
+from app.main_v3 import app  # noqa: E402,F401  (v3: 실데이터 사례 + 실데이터 문장 질문 API)

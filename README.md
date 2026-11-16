@@ -81,11 +81,11 @@ python scripts\run_bus_cases.py       :: 정책 사례 일괄 분석 → output\
 ## 5. 테스트
 
 ```bat
-cd backend && python -m pytest -q      :: 30건 (통계·게이트, 노선 흐름, 사례 API, 보안)
+cd backend && python -m pytest -q      :: 33건 (통계·게이트, 노선 흐름, 사례 API, 보안)
 cd frontend && npm run build           :: 타입 검사 + 빌드
 ```
 
-공개 URL 배포 절차는 `docs/DEPLOY_VERCEL.md`.
+공개 URL: https://jeju-policy-mirror.vercel.app (절차는 `docs/DEPLOY_VERCEL.md`). 화면은 실데이터만 씁니다: 위쪽은 정해진 정책 사례 5건, 아래쪽은 노선 번호·시행 연월이 들어간 자유 질문(`POST /api/ask`). 합성 샘플 화면(`App.tsx`)은 개발·테스트용으로만 남겨 두었습니다.
 
 ## 6. 환경변수
 

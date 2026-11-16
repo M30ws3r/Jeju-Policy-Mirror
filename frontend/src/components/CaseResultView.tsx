@@ -15,7 +15,8 @@ const STATUS_TEXT: Record<CheckStatus, string> = { pass: "통과", warn: "주의
 const signed = (v: number) => `${v > 0 ? "+" : ""}${v.toFixed(1)}%`;
 const people = (v?: number) => (v === undefined ? "-" : `${Math.round(v).toLocaleString("ko-KR")}명`);
 
-export function CaseResultView({ result }: { result: CaseResult }) {
+// onPdf: 자유 질문 결과처럼 사례 ID 가 없는 경우 PDF 받는 방법을 바꿔 끼운다 (없으면 사례 PDF).
+export function CaseResultView({ result, onPdf }: { result: CaseResult; onPdf?: () => Promise<void> }) {
   const [busy, setBusy] = useState(false);
   const [pdfError, setPdfError] = useState("");
   const { verdict, estimates, checks, series, spec, observed } = result;
@@ -26,7 +27,7 @@ export function CaseResultView({ result }: { result: CaseResult }) {
     setBusy(true);
     setPdfError("");
     try {
-      await casesApi.downloadPdf(result.case_id);
+      await (onPdf ? onPdf() : casesApi.downloadPdf(result.case_id));
     } catch (err) {
       setPdfError(err instanceof CaseFailure ? err.message : "PDF 를 만들 수 없습니다.");
     } finally {
